@@ -1,0 +1,1114 @@
+<html>
+
+<head>
+
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="./assets/css/style.css" rel="stylesheet" type="text/css" media="screen">
+
+<script src="./assets/js/jquery.js"></script>
+<link href="//cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css" rel="stylesheet">
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+
+<body>
+
+<div style="background-image: linear-gradient(293deg, #ed355b 0%, #1f65db 100%);" class="modal fade" id="secim_yap" tabindex="-1" role="dialog" aria-labelledby="memberModalLabel" aria-hidden="true">
+<div class="modal-dialog modal-lg">
+<div class="modal-content">
+<div class="modal-header">
+<h1>SUPERGUY FIGHTING</h1> 
+</div>
+<div class="modal-body">
+
+<div class="row" id="veli_izin_5">
+
+<section class="col" style="padding:0px; margin:0px; width: 100%;">
+
+<label style="width: 100%;">
+
+
+<div id="start_info">
+
+<div class="col col-md-12">
+
+<div class="col col-md-6"><img src="./char/char_16.gif"  /></div>
+
+<div class="col col-md-6">SuperGuy is Waiting to Destroy the Enemies!!!</div>
+</div>
+
+</div>
+
+</label>
+
+</section>
+
+<div style="clear:both"></div>
+
+</div>
+
+</div>
+
+<div class="modal-footer">
+
+<div id="start_game" class="btn btn-primary btn-block"  data-dismiss="modal"  style="margin: 17px 0 0 5px; height:33px;">
+
+START GAME
+
+</div>
+
+</div>
+<div style="clear:both"></div>
+</div>
+</div>
+</div>
+
+<script type="text/javascript">
+
+$(function(){
+
+$('#secim_yap').modal({backdrop: 'static', keyboard: false});
+
+});
+
+</script>
+
+
+<div id="char"><img id="hero" src="./char/char_16.gif" /></div>
+
+
+<!-- ENEMY -->
+
+<div id="enemy1"><img id="enemy" src="./enemy/yarasa.png" /></div>
+
+<div id="enemy2"><img id="enemy" src="./enemy/yarasa2.png" /></div>
+
+<div id="enemy3"><img id="enemy" src="./enemy/yarasa2.png" /></div>
+
+<div id="enemy4"><img id="enemy" src="./enemy/yarasa2.png" /></div>
+
+<div id="enemy5"><img id="enemy" src="./enemy/yarasa2.png" /></div>
+
+<div id="console" style="position:absolute;bottom:0px; padding:10px;background-color:black; color:white; width:100%; font-size:9px">
+</div>
+
+<div style="position:absolute; right:10px;top:30px;"><img src="./images/monitor.gif" width="300"/></div>
+
+<div style="color:white;position: absolute;top: 31px;left: 8px;"><h1>HEALTH</h1></div>
+
+<div class="health_bar"></div>
+
+<div class="health_bar bar"></div>
+
+
+<div style="color:white;position: absolute;top: 134px;left: 8px;"><h1 style="float: left;margin-top: 7px;">SCORE</h1> <div class="score_bar" style="float: left;margin-top: 0px;margin-left: 20px;font-size: 39px;">0</div></div>
+
+<script>
+
+ 
+let char_position = document.getElementById("char").getBoundingClientRect();
+
+let char_coordinate_width = document.getElementById("char").offsetWidth;
+
+let char_coordinate_left = document.getElementById("char").offsetLeft;
+
+let char_position_front = char_coordinate_width + char_coordinate_left;
+
+
+// DETECTING THE DISTANCE BETWEEN ENEMY 1 AND CHAR
+
+let enemy1_inter = setInterval(function () { 
+
+let enemy_position1 = document.getElementById("enemy1").offsetLeft; // DISTANCE TO LEFT OF ENEMY
+
+let plus_kill = enemy_position1 + 100 // CALCULATING THE KILLING DISTANCE OF ENEMY
+
+if (char_coordinate_left >= plus_kill) { // DISTANCE BETWEEN OUR CHAR AND ENEMY
+
+setTimeout(function () {
+
+$('.bar').css("width", "23%"); // IF ENEMY TOUCHES TO CHAR ENERGY REDUCES
+
+}, 10);
+
+
+}
+
+}, 10);
+
+// END OF DETECTION
+
+setTimeout(function () { // RESETING THE INTERVAL
+
+clearInterval(enemy1_inter, 100); 
+
+}, 10000)
+
+
+// DETECTING THE DISTANCE BETWEEN ENEMY 2 AND CHAR
+
+
+let enemy2_inter = setInterval(function () {
+
+let enemy_position2 = document.getElementById("enemy2").offsetLeft;
+
+let plus_kill2 = enemy_position2 + 100
+
+if (char_coordinate_left >= plus_kill2) {
+
+setTimeout(function () {
+
+$('.bar').css("width", "20%");
+
+}, 10);
+
+}
+
+}, 10);
+
+
+setTimeout(function () {  
+
+clearInterval(enemy2_inter, 100); 
+
+}, 10000)
+
+// DETECTING THE DISTANCE BETWEEN ENEMY 3 AND CHAR
+
+
+let enemy3_inter = setInterval(function () {
+
+let enemy_position3 = document.getElementById("enemy3").offsetLeft;
+
+
+let plus_kill3 = enemy_position3 + 100
+
+if (char_coordinate_left >= plus_kill3) {
+
+setTimeout(function () {
+
+$('.bar').css("width", "10%");
+
+}, 10);
+
+}
+
+}, 10);
+
+setTimeout(function () {
+
+clearInterval(enemy3_inter, 100); 
+
+}, 10000)
+
+
+// DETECTING THE DISTANCE BETWEEN ENEMY 4 AND CHAR
+
+
+let enemy4_inter = setInterval(function () {
+
+let enemy_position4 = document.getElementById("enemy4").offsetLeft;
+
+
+let plus_kill4 = enemy_position4 + 100
+
+if (char_coordinate_left >= plus_kill4) {
+
+setTimeout(function () {
+
+$('.bar').css("width", "0");
+
+}, 10);
+
+}
+
+}, 10);
+
+setTimeout(function () {
+
+clearInterval(enemy4_inter, 100); 
+
+}, 10000)
+
+// DETECTING THE DISTANCE BETWEEN ENEMY 5 AND CHAR
+
+
+let enemy5_inter = setInterval(function () {
+
+let enemy_position5 = document.getElementById("enemy5").offsetLeft;
+
+
+let plus_kill5 = enemy_position5 + 100
+
+if (char_coordinate_left >= plus_kill5) {
+
+setTimeout(function () {
+
+$('.bar').css("width", "0");
+
+}, 10);
+
+}
+
+}, 10);
+
+setTimeout(function () {
+
+clearInterval(enemy5_inter, 100); 
+
+}, 10000)
+
+
+</script>
+
+</body>
+
+<footer>
+
+</footer>
+
+<script>
+
+// VARIABLES
+
+let x = 450, y = 450;
+
+let walk = 10
+
+let char_energy = 100;
+
+let enemy_energy = 100;
+
+$(document).ready(function () { // CHECK IF THE PAGE IS LOADED
+
+$("#start_game").on("click",function(){ // START THE GAME FUNCTION
+
+var back = new Audio();
+
+back.src = './assets/back.mp3';
+
+back.play();
+
+var okey = new Audio();
+
+okey.src = './assets/okey.mp3';
+
+okey.play();
+
+
+
+
+$("#enemy1").animate({ right: '+=3000px' }, 10000); // DIV OF ENEMY 1 SLIDING TO LEFT
+
+$("#enemy2").animate({ right: '+=4000px' }, 10000); // DIV OF ENEMY 2 SLIDING TO LEFT
+
+$("#enemy3").animate({ right: '+=5000px' }, 10000); // DIV OF ENEMY 3 SLIDING TO LEFT
+
+$("#enemy4").animate({ right: '+=6000px' }, 10000); // DIV OF ENEMY 4 SLIDING TO LEFT
+
+$("#enemy5").animate({ right: '+=3500px' }, 10000); // DIV OF ENEMY 5 SLIDING TO LEFT
+
+});
+
+}).keydown(function (event) {
+
+var movement = (event.which) ? event.which : event.keyCode;
+
+
+
+if (movement == 37) { // CLICK LEFT ARROW BUTTON TO MOVEE THE BACKGROUND 
+
+/*
+x = x - 10;
+$("#char").css("left", x + "px")
+*/
+
+walk = walk + 50
+
+$('body').animate({
+backgroundPosition: walk
+}, "fast")
+}
+
+
+if (movement == 39) { // CLICK RIGHT ARROW BUTTON TO MOVEE THE BACKGROUND
+
+/*
+x = x + 10;
+$("#char").css("left", x + "px");
+*/
+
+walk = walk - 50
+
+$('body').animate({
+backgroundPosition: walk
+}, "fast")
+}
+
+var hadouken = new Audio();
+
+var shoryuken = new Audio();
+
+if (movement == 65) { // SWORD ATTACK 1
+
+setTimeout(function () {
+$("#hero").attr("src", "char/char_20.gif");
+}, 50);
+
+hadouken.src = './assets/hadouken.mp3';
+
+hadouken.play();
+
+setTimeout(function () { // DEFEATING ENEMY 1
+
+let score_totalite = parseInt($(".score_bar").text());
+
+let enemy_coordinate_left = document.getElementById("enemy1").offsetLeft;
+
+let sword1 = char_coordinate_left;
+
+if (sword1 >= enemy_coordinate_left) {
+
+$('#enemy1').remove();
+
+score_totalite = score_totalite+100;
+
+$(".score_bar").empty();
+
+$(".score_bar").text(score_totalite);
+
+}
+
+hadouken.pause();
+
+}, 10);
+
+
+setTimeout(function () { // DEFEATING ENEMY 2
+
+let score_totalite = parseInt($(".score_bar").text());
+
+let enemy2_coordinate_left = document.getElementById("enemy2").offsetLeft;
+
+let sword1 = char_coordinate_left;
+
+if (sword1 >= enemy2_coordinate_left) {
+
+$('#enemy2').remove();
+
+score_totalite = score_totalite+100;
+
+$(".score_bar").empty();
+
+$(".score_bar").text(score_totalite);
+
+}
+
+hadouken.pause();
+
+}, 10);
+
+
+
+setTimeout(function () { // DEFEATING ENEMY 3
+
+let score_totalite = parseInt($(".score_bar").text());
+
+let enemy3_coordinate_left = document.getElementById("enemy3").offsetLeft;
+
+let sword1 = char_coordinate_left;
+
+if (sword1 >= enemy3_coordinate_left) {
+
+$('#enemy3').remove();
+
+score_totalite = score_totalite+100;
+
+$(".score_bar").empty();
+
+$(".score_bar").text(score_totalite);
+
+}
+
+hadouken.pause();
+
+}, 10);
+
+
+setTimeout(function () { // DEFEATING ENEMY 4
+
+let score_totalite = parseInt($(".score_bar").text());
+
+let enemy4_coordinate_left = document.getElementById("enemy4").offsetLeft;
+
+let sword1 = char_coordinate_left;
+
+if (sword1 >= enemy4_coordinate_left) {
+
+$('#enemy4').remove();
+
+score_totalite = score_totalite+100;
+
+$(".score_bar").empty();
+
+$(".score_bar").text(score_totalite);
+
+}
+
+hadouken.pause();
+
+}, 10);
+
+
+setTimeout(function () { // DEFEATING ENEMY 5
+
+let score_totalite = parseInt($(".score_bar").text());
+
+let enemy5_coordinate_left = document.getElementById("enemy5").offsetLeft;
+
+let sword1 = char_coordinate_left;
+
+if (sword1 >= enemy5_coordinate_left) {
+
+$('#enemy5').remove();
+
+score_totalite = score_totalite+100;
+
+$(".score_bar").empty();
+
+$(".score_bar").text(score_totalite);
+
+}
+
+hadouken.pause();
+
+}, 10);
+
+
+
+
+setTimeout(function () {
+$("#hero").attr("src", "char/char_21.gif");
+}, 100);
+
+setTimeout(function () {
+$("#hero").attr("src", "char/char_22.gif");
+}, 150);
+
+setTimeout(function () {
+$("#hero").attr("src", "char/char_23.gif");
+}, 200);
+
+setTimeout(function () {
+$("#hero").attr("src", "char/char_24.gif");
+}, 250);
+
+setTimeout(function () {
+$("#hero").attr("src", "char/char_25.gif");
+}, 300);
+
+setTimeout(function () {
+$("#hero").attr("src", "char/char_26.gif");
+}, 350);
+
+setTimeout(function () {
+$("#hero").attr("src", "char/char_27.gif");
+}, 401);
+
+setTimeout(function () {
+$("#hero").attr("src", "char/char_28.gif");
+}, 450);
+
+setTimeout(function () {
+$("#hero").attr("src", "char/char_29.gif");
+}, 500);
+
+setTimeout(function () {
+$("#hero").attr("src", "char/char_30.gif");
+}, 550);
+
+setTimeout(function () {
+$("#hero").attr("src", "char/char_16.gif");
+}, 600);
+
+}
+
+
+
+if (movement == 83) { // SWORD ATTACK 2
+
+setTimeout(function () {
+$("#hero").attr("src", "char/char_02.gif");
+}, 50);
+
+hadouken.src = './assets/hadouken.mp3';
+
+hadouken.play();
+
+setTimeout(function () { // DEFEFATING ENEMY 1
+
+let score_totalite = parseInt($(".score_bar").text());
+
+let enemy_coordinate_left = document.getElementById("enemy1").offsetLeft;
+
+let sword1 = char_coordinate_left;
+
+if (sword1 >= enemy_coordinate_left) {
+
+$('#enemy1').remove();
+
+score_totalite = score_totalite+100;
+
+$(".score_bar").empty();
+
+$(".score_bar").text(score_totalite);
+
+}
+
+hadouken.pause();
+
+}, 10);
+
+
+setTimeout(function () { // DEFEFATING ENEMY 2
+
+let score_totalite = parseInt($(".score_bar").text());
+
+let enemy2_coordinate_left = document.getElementById("enemy2").offsetLeft;
+
+let sword1 = char_coordinate_left;
+
+if (sword1 >= enemy2_coordinate_left) {
+
+$('#enemy2').remove();
+
+score_totalite = score_totalite+100;
+
+$(".score_bar").empty();
+
+$(".score_bar").text(score_totalite);
+
+}
+
+hadouken.pause();
+
+}, 10);
+
+
+
+setTimeout(function () { // DEFEFATING ENEMY 3
+
+let score_totalite = parseInt($(".score_bar").text());
+
+let enemy3_coordinate_left = document.getElementById("enemy3").offsetLeft;
+
+let sword1 = char_coordinate_left;
+
+if (sword1 >= enemy3_coordinate_left) {
+
+$('#enemy3').remove();
+
+score_totalite = score_totalite+100;
+
+$(".score_bar").empty();
+
+$(".score_bar").text(score_totalite);
+
+}
+
+hadouken.pause();
+
+}, 10);
+
+
+setTimeout(function () { // DEFEFATING ENEMY 4
+
+let score_totalite = parseInt($(".score_bar").text());
+
+let enemy4_coordinate_left = document.getElementById("enemy4").offsetLeft;
+
+let sword1 = char_coordinate_left;
+
+if (sword1 >= enemy4_coordinate_left) {
+
+$('#enemy4').remove();
+
+score_totalite = score_totalite+100;
+
+$(".score_bar").empty();
+
+$(".score_bar").text(score_totalite);
+
+}
+
+hadouken.pause();
+
+}, 10);
+
+
+setTimeout(function () { // DEFEFATING ENEMY 5
+
+let score_totalite = parseInt($(".score_bar").text());
+
+let enemy5_coordinate_left = document.getElementById("enemy5").offsetLeft;
+
+let sword1 = char_coordinate_left;
+
+if (sword1 >= enemy5_coordinate_left) {
+
+$('#enemy5').remove();
+
+score_totalite = score_totalite+100;
+
+$(".score_bar").empty();
+
+$(".score_bar").text(score_totalite);
+
+}
+
+hadouken.pause();
+
+}, 10);
+
+
+
+
+setTimeout(function () {
+$("#hero").attr("src", "char/char_03.gif");
+}, 100);
+
+setTimeout(function () {
+$("#hero").attr("src", "char/char_04.gif");
+}, 150);
+
+setTimeout(function () {
+$("#hero").attr("src", "char/char_05.gif");
+}, 200);
+
+setTimeout(function () {
+$("#hero").attr("src", "char/char_06.gif");
+}, 250);
+
+setTimeout(function () {
+$("#hero").attr("src", "char/char_07.gif");
+}, 300);
+
+setTimeout(function () {
+$("#hero").attr("src", "char/char_16.gif");
+}, 350);
+
+}
+
+/* JUMP */
+
+if (movement === 32) {
+
+$('#char').animate({ top: "-=200px" }, 'fast');
+
+setTimeout(function () {
+
+$('#char').animate({ top: "+=200px" }, 'fast');
+
+}, 100);
+
+}
+
+// SWORD ATTACK 3
+
+if (movement === 68) {
+
+setTimeout(function () {
+$('#hero').attr("src", "./char/char_42.gif");
+}, 100)
+
+shoryuken.src = './assets/shoryuken.mp3';
+
+shoryuken.play();
+
+
+setTimeout(function () { // DEFEFATING ENEMY 1
+
+let score_totalite = parseInt($(".score_bar").text());
+
+let enemy_coordinate_left = document.getElementById("enemy1").offsetLeft;
+
+let sword1 = char_coordinate_left;
+
+if (sword1 >= enemy_coordinate_left) {
+
+$('#enemy1').remove();
+
+score_totalite = score_totalite+100;
+
+$(".score_bar").empty();
+
+$(".score_bar").text(score_totalite);
+
+}
+
+shoryuken.pause();
+
+}, 10);
+
+
+setTimeout(function () { // DEFEFATING ENEMY 2
+
+let score_totalite = parseInt($(".score_bar").text());
+
+let enemy2_coordinate_left = document.getElementById("enemy2").offsetLeft;
+
+let sword1 = char_coordinate_left;
+
+if (sword1 >= enemy2_coordinate_left) {
+
+$('#enemy2').remove();
+
+score_totalite = score_totalite+100;
+
+$(".score_bar").empty();
+
+$(".score_bar").text(score_totalite);
+
+}
+
+shoryuken.pause();
+
+}, 10);
+
+
+
+setTimeout(function () { // DEFEFATING ENEMY 3
+
+let score_totalite = parseInt($(".score_bar").text());
+
+let enemy3_coordinate_left = document.getElementById("enemy3").offsetLeft;
+
+let sword1 = char_coordinate_left;
+
+if (sword1 >= enemy3_coordinate_left) {
+
+$('#enemy3').remove();
+
+score_totalite = score_totalite+100;
+
+$(".score_bar").empty();
+
+$(".score_bar").text(score_totalite);
+
+}
+
+shoryuken.pause();
+
+}, 10);
+
+
+setTimeout(function () { // DEFEFATING ENEMY 4
+
+let score_totalite = parseInt($(".score_bar").text());
+
+let enemy4_coordinate_left = document.getElementById("enemy4").offsetLeft;
+
+let sword1 = char_coordinate_left;
+
+if (sword1 >= enemy4_coordinate_left) {
+
+$('#enemy4').remove();
+
+score_totalite = score_totalite+100;
+
+$(".score_bar").empty();
+
+$(".score_bar").text(score_totalite);
+
+}
+
+shoryuken.pause();
+
+}, 10);
+
+
+setTimeout(function () { // DEFEFATING ENEMY 5
+
+let score_totalite = parseInt($(".score_bar").text());
+
+let enemy5_coordinate_left = document.getElementById("enemy5").offsetLeft;
+
+let sword1 = char_coordinate_left;
+
+if (sword1 >= enemy5_coordinate_left) {
+
+$('#enemy5').remove();
+
+score_totalite = score_totalite+100;
+
+$(".score_bar").empty();
+
+$(".score_bar").text(score_totalite);
+
+}
+
+shoryuken.pause();
+
+}, 10);
+
+setTimeout(function () {
+$('#hero').attr("src", "./char/char_43.gif");
+}, 200)
+
+setTimeout(function () {
+$('#hero').attr("src", "./char/char_44.gif");
+}, 300)
+
+setTimeout(function () {
+$('#hero').attr("src", "./char/char_45.gif");
+}, 400)
+
+setTimeout(function () {
+$('#hero').attr("src", "./char/char_16.gif");
+}, 500)
+
+shoryuken.play();
+
+}
+
+// SWORD ATTACK 4
+
+if (movement === 70) {
+
+setTimeout(function () {
+$('#hero').attr("src", "./char/char_47.gif");
+}, 100)
+
+setTimeout(function () { // DEFEFATING ENEMY 1
+
+let score_totalite = parseInt($(".score_bar").text());
+
+let enemy_coordinate_left = document.getElementById("enemy1").offsetLeft;
+
+let sword1 = char_coordinate_left;
+
+if (sword1 >= enemy_coordinate_left) {
+
+$('#enemy1').remove();
+
+score_totalite = score_totalite+100;
+
+$(".score_bar").empty();
+
+$(".score_bar").text(score_totalite);
+
+}
+
+shoryuken.pause();
+
+}, 10);
+
+
+setTimeout(function () { // DEFEFATING ENEMY 2
+
+let score_totalite = parseInt($(".score_bar").text());
+
+let enemy2_coordinate_left = document.getElementById("enemy2").offsetLeft;
+
+let sword1 = char_coordinate_left;
+
+if (sword1 >= enemy2_coordinate_left) {
+
+$('#enemy2').remove();
+
+score_totalite = score_totalite+100;
+
+$(".score_bar").empty();
+
+$(".score_bar").text(score_totalite);
+
+}
+
+shoryuken.pause();
+
+}, 10);
+
+
+
+setTimeout(function () { // DEFEFATING ENEMY 3
+
+let score_totalite = parseInt($(".score_bar").text());
+
+let enemy3_coordinate_left = document.getElementById("enemy3").offsetLeft;
+
+let sword1 = char_coordinate_left;
+
+if (sword1 >= enemy3_coordinate_left) {
+
+$('#enemy3').remove();
+
+score_totalite = score_totalite+100;
+
+$(".score_bar").empty();
+
+$(".score_bar").text(score_totalite);
+
+}
+
+shoryuken.pause();
+
+}, 10);
+
+
+setTimeout(function () { // DEFEFATING ENEMY 4
+
+let score_totalite = parseInt($(".score_bar").text());
+
+let enemy4_coordinate_left = document.getElementById("enemy4").offsetLeft;
+
+let sword1 = char_coordinate_left;
+
+if (sword1 >= enemy4_coordinate_left) {
+
+$('#enemy4').remove();
+
+score_totalite = score_totalite+100;
+
+$(".score_bar").empty();
+
+$(".score_bar").text(score_totalite);
+
+}
+
+shoryuken.pause();
+
+}, 10);
+
+
+setTimeout(function () { // DEFEFATING ENEMY 5
+
+let score_totalite = parseInt($(".score_bar").text());
+
+let enemy5_coordinate_left = document.getElementById("enemy5").offsetLeft;
+
+let sword1 = char_coordinate_left;
+
+if (sword1 >= enemy5_coordinate_left) {
+
+$('#enemy5').remove();
+
+score_totalite = score_totalite+100;
+
+$(".score_bar").empty();
+
+$(".score_bar").text(score_totalite);
+
+}
+
+shoryuken.pause();
+
+}, 10);
+
+setTimeout(function () {
+$('#hero').attr("src", "./char/char_43.gif");
+}, 200)
+
+setTimeout(function () {
+$('#hero').attr("src", "./char/char_44.gif");
+}, 300)
+
+setTimeout(function () {
+$('#hero').attr("src", "./char/char_45.gif");
+}, 400)
+
+setTimeout(function () {
+$('#hero').attr("src", "./char/char_16.gif");
+}, 500)
+
+shoryuken.play();
+
+}
+
+
+
+// JUMP FORWARD
+
+if (movement === 69) {
+
+walk = walk - 50;
+
+$('body').animate({
+backgroundPosition: walk
+}, 300)
+
+walk = walk - 100;
+
+$('body').animate({
+backgroundPosition: walk
+}, 200)
+
+walk = walk - 150;
+
+$('body').animate({
+backgroundPosition: walk
+}, 150)
+
+
+
+
+for (i = 0; i < 8; i++) {
+
+if (i === 1) {
+setTimeout(function () {
+$('#hero').attr("src", "./char/char_55.gif");
+}, 100)
+
+} else if (i === 2) {
+
+setTimeout(function () {
+$('#hero').attr("src", "./char/char_56.gif");
+}, 200)
+
+} else if (i === 3) {
+
+setTimeout(function () {
+$('#hero').attr("src", "./char/char_57.gif");
+}, 300)
+
+} else if (i === 4) {
+
+setTimeout(function () {
+$('#hero').attr("src", "./char/char_58.gif");
+}, 401)
+
+} else if (i === 5) {
+
+setTimeout(function () {
+$('#hero').attr("src", "./char/char_59.gif");
+}, 500)
+
+} else if (i === 6) {
+
+setTimeout(function () {
+$('#hero').attr("src", "./char/char_60.gif");
+}, 600)
+
+} else if (i === 7) {
+
+setTimeout(function () {
+$('#hero').attr("src", "./char/char_16.gif");
+}, 700)
+
+}
+
+}
+
+}
+
+});
+
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+<script src="./assets/js/script.js"></script>
+
+</html>

@@ -1,0 +1,128 @@
+/* HEADER */
+
+.header {
+	position: fixed;
+	width: 100%;
+	padding: 5px 10px;
+	margin-bottom: 50px;
+	background-color: #cfcfcf;
+	z-index: 1000;
+  }
+  
+  .header__inner {
+	display: flex;
+	position: relative;
+	align-items: center;
+	justify-content: center;
+	height: 64px;
+  }
+  
+  .header__inner__title {
+	font-family: "Hubballi", cursive;
+	font-size: 45px;
+  }
+
+  .health_bar{
+
+	width:25%; height: 2px; border:1px solid #e1e1e1; 
+    position:absolute; top:80px; left:9px; 
+    background-color:white; padding:20px; 
+    z-index:1001
+  }
+
+  .bar{
+	width:25%; background-color:green
+
+  }
+  
+  .score_bar{
+
+	color:white; font-size:20px
+  }
+  
+  
+  
+body{
+
+background-image: url(../../images/back2.jpg);
+background-color:black;
+background-repeat:repeat-x;
+-webkit-background-size: cover;
+-moz-background-size: cover;
+background-size: cover;
+overflow-x: hidden;
+}
+
+
+#char{
+z-index: 1;
+position: absolute;
+bottom: 8.9%;
+left: 400px;
+width:15%;
+}
+
+
+#char{
+z-index: 1;
+position: absolute;
+bottom: 8.9%;
+left: 400px;
+width:15%;
+}
+
+
+
+
+#enemy1{
+	z-index: 1;
+	position: absolute;
+	bottom: 8.9%;
+	right: -150px;
+	width:150px;
+	}
+
+#enemy2{
+	z-index: 1;
+	position: absolute;
+	bottom: 8.9%;
+	right: -350px;
+	width:150px;
+	}
+	
+	
+#enemy3{
+	z-index: 1;
+	position: absolute;
+	bottom: 8.9%;
+	right: -650px;
+	width:150px;
+	}
+	
+#enemy4{
+	z-index: 1;
+	position: absolute;
+	bottom: 8.9%;
+	right: -850px;
+	width:150px;
+	}
+	
+#enemy5{
+	z-index: 1;
+	position: absolute;
+	bottom: 8.9%;
+	right: -250px;
+	width:150px;
+	}
+
+/* MOBIL KOD BAŞLANGICI */
+
+
+
+@media only screen and (min-width:500px) and (max-width:1000px) {
+	
+#game-box {
+	width:80%!important;
+
+}
+}
